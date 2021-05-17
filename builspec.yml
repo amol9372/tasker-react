@@ -1,0 +1,23 @@
+version: 0.1
+phases:
+  pre_build:
+    commands:
+      - cd google-login
+      - echo Installing source NPM dependencies...
+      - npm install
+  build:
+    commands:
+      - echo Build started on `date`
+      - ls
+      - cd google-login
+      - npm run build
+  post_build:
+    commands:
+      # copy the contents of /build to S3
+      - ls
+      - cd google-login
+      - aws s3 cp --recursive --acl public-read ./build s3://tasker-react/ 
+artifacts:
+  files:
+    - '**/*'
+  base-directory: build
