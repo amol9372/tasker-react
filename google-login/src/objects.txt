@@ -1,0 +1,20 @@
+task {id, name, priority, status, assigned_person}
+
+section {id, name, tasks[]}
+
+label {id, name, color, sections[], shared_labels}
+
+shared_labels (id, label_id, user_id, primary(T/F))
+
+
+1  work  amol   T
+2  work  preet  F
+3  work  vikas  F 
+
+
+    id serial primary key,
+    user_label_id integer NOT NULL,
+    user_id integer NOT NULL,
+	primary_user boolean,
+    created_on date,
+    updated_date date,

@@ -1,0 +1,53 @@
+{
+    "labels": [
+        {
+            "id": 1,
+            "color": "red",
+            "name": "label 1",
+            "sections": [
+                {
+                    "id": 1,
+                    "name": "Section 1",
+                    "tasks": [
+                        {
+                            "id": 1,
+                            "name": "task 1",
+                            "priority": "P1",
+                            "assigned": "<user_id>",
+                            "status": "active | completed"
+                        },
+                        {
+                            "name": "task 2"
+                        },
+                        {
+                            "name": "task 3"
+                        }
+                    ]
+                },
+                {
+                    "name": "Section 2",
+                    "tasks": [
+                        {
+                            "name": "task 4"
+                        },
+                        {
+                            "name": "task 5"
+                        },
+                        {
+                            "name": "task 6"
+                        }
+                    ]
+                }
+            ],
+            "shared": {
+                "primary": true,
+                "other_users": [
+                    {
+                        "user_id": "user 1",
+                        "primary": false
+                    }
+                ]
+            }
+        }
+    ]
+}
