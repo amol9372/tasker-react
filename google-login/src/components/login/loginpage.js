@@ -24,7 +24,9 @@ const LoginPage = () => {
       return;
     }
 
-    const request = { id_token: res.tokenId };
+    console.log(res);
+
+    const request = { id_token: res.tokenId, profile: res.profileObj };
 
     getLoginResponse("/user/google-signin", request);
   };
