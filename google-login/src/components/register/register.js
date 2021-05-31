@@ -10,6 +10,7 @@ import axios from "axios";
 import CardBox from "../UI/cardbox";
 import Label from "../UI/label";
 import { Link } from "@material-ui/core";
+import { isMobile } from "react-device-detect";
 
 axios.defaults.headers.common["X-Requested-With"] = "XmlHttpRequest";
 axios.defaults.baseURL = process.env.REACT_APP_SERVER_BASE_URL;
@@ -119,11 +120,17 @@ function Register() {
     margin: "auto",
   };
 
+  const cardWidth = () => {
+    if (isMobile) {
+      return "80%";
+    }
+  };
+
   return (
     <React.Fragment>
       <form onSubmit={loginFormSubmit}>
         <CardBox>
-          <Card>
+          <Card width={cardWidth}>
             <Label color="hsla(0,0%,100%,.87)" font="25px">
               Register{" "}
             </Label>

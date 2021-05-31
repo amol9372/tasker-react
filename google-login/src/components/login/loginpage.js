@@ -42,13 +42,15 @@ const LoginPage = () => {
     response
       .then((res) => {
         console.log(res);
-        localStorage.setItem("access_token", res.data.access_token);
-        localStorage.setItem("refresh_token", res.data.refresh_token);
-        localStorage.setItem("user", JSON.stringify(res.data.user));
 
-        setResponse(res.message);
+        if (res.data.status === 200) {
+          localStorage.setItem("access_token", res.data.access_token);
+          localStorage.setItem("refresh_token", res.data.refresh_token);
+          localStorage.setItem("user", JSON.stringify(res.data.user));
+          setUserLoggedIn(true);
+        }
 
-        setUserLoggedIn(res.loggedIn);
+        setResponse(res.data.message);
       })
       .catch((error) => {
         console.log(error);

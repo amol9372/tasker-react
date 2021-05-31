@@ -7,6 +7,7 @@ import { Redirect } from "react-router";
 import LoadingIndicator from "../UI/loader";
 import AddSection from "./addSection";
 import NoSections from "./noSections";
+import { isBrowser, isMobile } from "react-device-detect";
 
 const sectionAttribute = {
   id: NaN,
@@ -22,9 +23,18 @@ const sectionAttribute = {
   ],
 };
 
+const browserColumns = 3;
+const mobileColumns = 1;
+
 const useStyles = makeStyles({
   sections: {
-    columnCount: 3,
+    columnCount: () => {
+      if (isMobile) {
+        return mobileColumns;
+      } else {
+        return browserColumns;
+      }
+    },
     columnGap: "10px",
     padding: "10px",
     display: "inline-block",

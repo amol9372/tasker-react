@@ -8,6 +8,7 @@ import CardBox from "../UI/cardbox";
 import { Link } from "@material-ui/core";
 import Label from "../UI/label";
 import LoadingIndicator from "../UI/loader";
+import { isMobile } from "react-device-detect";
 
 function LoginBox(props) {
   const userAttribute = {
@@ -46,11 +47,17 @@ function LoginBox(props) {
     margin: "auto",
   };
 
+  const loginCardWidth = () => {
+    if (isMobile) {
+      return "70%";
+    }
+  };
+
   return (
     <React.Fragment>
       <form onSubmit={loginFormSubmit}>
         <CardBox align="center">
-          <Card>
+          <Card width={loginCardWidth}>
             <Label color="hsla(0,0%,100%,.87)" font="25px">
               Login{" "}
             </Label>

@@ -3,6 +3,7 @@ import Card from "../UI/card";
 import TaskFieldBox from "../task/taskfieldbox";
 import React from "react";
 import SectionTitle from "./sectiontitle";
+import { isMobile } from "react-device-detect";
 
 // const taskAttribute = {
 //   id: NaN,
@@ -39,8 +40,12 @@ const SectionCard = (props) => {
       flexGap="4px"
       marginBottom="25px"
       display="inline-block"
-      bgColor="white"
-      marginRight="20px"
+      marginRight={() => {
+        if (isMobile) {
+          return "3px";
+        }
+        return "20px";
+      }}
     >
       <SectionTitle
         section={section}

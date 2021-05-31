@@ -15,6 +15,7 @@ const useStyles = makeStyles({
     marginBottom: (props) => props.marginBottom,
     paddingBottom: (props) => props.paddingBottom,
     marginRight: (props) => props.marginRight,
+    height: (props) => props.height,
   },
 
   size: {},
