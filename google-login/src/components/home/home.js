@@ -8,7 +8,7 @@ import LabelHeader from "../labelheader/labelheader";
 import Sections from "../section/sections";
 import Logout from "../logout/logout";
 import MobileSidebar from "../sidebar/mobileSidebar";
-import { isMobile } from "react-device-detect";
+import { isMobile, isBrowser } from "react-device-detect";
 
 const useStyles = makeStyles({
   base: {
@@ -32,13 +32,18 @@ const useStyles = makeStyles({
     flexDirection: "row",
     // padding: "30px",
     // marginRight: "2px",
-    // width: "600px",
+    //width: "600px",
 
     // paddingRight: "10px",
   },
+  horizontalBar: {
+    display: "flex",
+    flexDirection: "row",
+  },
   logout: {
     marginLeft: "auto",
-    marginRight: "20px",
+    marginRight: "10px",
+    marginTop: "3%",
   },
 });
 
@@ -92,12 +97,17 @@ const Home = () => {
   const getSideBar = () => {
     if (isMobile) {
       return (
-        <MobileSidebar
-          addLabel={addLabel}
-          showSections={changeCurrentLabel}
-          setCurrentLabel={(label) => setCurrentLabel(label)}
-          authRequired={authRequired}
-        />
+        <div className={baseStyle.horizontalBar}>
+          <MobileSidebar
+            addLabel={addLabel}
+            showSections={changeCurrentLabel}
+            setCurrentLabel={(label) => setCurrentLabel(label)}
+            authRequired={authRequired}
+          />
+          <div className={baseStyle.logout}>
+            <Logout onLogout={logoutUser} />
+          </div>
+        </div>
       );
     }
     return (
@@ -110,6 +120,10 @@ const Home = () => {
     );
   };
 
+  const browserLogout = () => {
+    return renderHome && isBrowser;
+  };
+
   return (
     <div className={baseStyle.outerDiv}>
       {authRequired && <Redirect to="/login" />}
@@ -118,9 +132,7 @@ const Home = () => {
         <div className={baseStyle.base}>
           <div className={baseStyle.baseDiv}>
             {getSideBar()}
-            {/* <div className={baseStyle.logout}>
-              <Logout onLogout={logoutUser} />
-            </div> */}
+
             {currentLabel.name && (
               <HomeDiv flexDirection="column">
                 <LabelHeader
@@ -151,7 +163,7 @@ const Home = () => {
           </div>
         </div>
       )}
-      {renderHome && (
+      {browserLogout() && (
         <div className={baseStyle.logout}>
           <Logout onLogout={logoutUser} />
         </div>

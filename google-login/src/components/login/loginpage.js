@@ -15,6 +15,7 @@ const LoginPage = () => {
     } else {
       console.log("[User needs to login]");
     }
+    // return () => {};
   }, []);
 
   const googleLoginResponse = (res) => {

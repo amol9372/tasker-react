@@ -34,9 +34,16 @@ const SectionCard = (props) => {
     props.toggleTaskStatus(tasks, sectionId);
   };
 
+  const getCardWidth = () => {
+    if (isMobile) {
+      return "100%";
+    }
+    return "300px";
+  };
+
   return (
     <Card
-      width="300px"
+      width={getCardWidth()}
       flexGap="4px"
       marginBottom="25px"
       display="inline-block"
